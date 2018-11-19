@@ -56,17 +56,17 @@
 
 让我们来看看原先service worker缓存更新的步骤：
 
-<img src="https://www.superbed.cn/pic/5bf16a0cc4ff9e24a0d686f2" width="800px">
+<img src="https://www.superbed.cn/pic/5bf219c4c4ff9e24a0d68757" width="800px">
 
 原本我看到这张图，会以为service worker会全权接管页面资源的缓存，而完全忽视http协议中的强缓存和协商缓存，然而我注意到了这个步骤：
 
-<img src="https://www.superbed.cn/pic/5bf16a5cc4ff9e24bf0ee119" width="800px">
+<img src="https://www.superbed.cn/pic/5bf21a3dc4ff9e24bf0ee189" width="800px">
 
 service worker自身去fetch资源时，会不会也受到http协议缓存的影响，从而实际的步骤是这样的：
 
-<img src="https://www.superbed.cn/pic/5bf16d42c4ff9e24bf0ee11a" width="800px">
+<img src="https://www.superbed.cn/pic/5bf21c1ec4ff9e24bf0ee1a3" width="800px">
 
-`双重缓存？`
+是不是想到了`双重缓存？`
 
 上网一搜，果然证实了我的想法：
 
