@@ -1,12 +1,12 @@
 # service worker踩坑记
 
 ## 引言
-> Service worker是一个在浏览器后台运行的脚本，与网页不相干，专注于那些不需要网页或用户互动就能完成的功能。它目前主要用于操作离线缓存。最近在使用它的过程碰到一个巨坑，遂分享出来，防止后人再次掉入😉
+> Service worker是一个在浏览器后台运行的脚本，与网页不相干，专注于那些不需要网页或用户互动就能完成的功能。它目前主要用于操作离线缓存。最近在使用它的过程碰到一个巨坑，遂分享出来，防止有同学再次掉入😉
 
 ## 关于service worker
 未听过service worker可以先看下以下几篇文章了解下：
 
-[谷歌开发者文档](https://github.com/wuchangming/spy-debugger)
+[谷歌开发者文档](https://developers.google.com/web/fundamentals/primers/service-workers/?hl=zh-cn)
 
 [阮一峰博客](http://javascript.ruanyifeng.com/htmlapi/webworker.html#toc14)
 
@@ -56,15 +56,15 @@
 
 让我们来看看原先service worker缓存更新的步骤：
 
-<img src="https://www.superbed.cn/pic/5bf219c4c4ff9e24a0d68757" width="800px">
+<img src="https://www.superbed.cn/pic/5bf219c4c4ff9e24a0d68757" width="1000px">
 
 原本我看到这张图，会以为service worker会全权接管页面资源的缓存，而完全忽视http协议中的强缓存和协商缓存，然而我注意到了这个步骤：
 
-<img src="https://www.superbed.cn/pic/5bf21a3dc4ff9e24bf0ee189" width="800px">
+<img src="https://www.superbed.cn/pic/5bf21a3dc4ff9e24bf0ee189" width="1000px">
 
 service worker自身去fetch资源时，会不会也受到http协议缓存的影响，从而实际的步骤是这样的：
 
-<img src="https://www.superbed.cn/pic/5bf21c1ec4ff9e24bf0ee1a3" width="800px">
+<img src="https://www.superbed.cn/pic/5bf21c1ec4ff9e24bf0ee1a3" width="1000px">
 
 是不是想到了`双重缓存？`
 
